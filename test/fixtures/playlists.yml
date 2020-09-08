@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  private_mode: false
+  collaborative_mode: false
+
+two:
+  title: MyString
+  description: MyText
+  private_mode: false
+  collaborative_mode: false
