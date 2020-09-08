@@ -59,8 +59,11 @@ puts "Create User : Done"
 puts "Create Playlist - Done"
   
 
+end
 
-
-
+5.times do |x|
+  video = Video.create(
+    url: "https://www.youtube.com/watch?v=aeePeVUW6-k"
+  )
 end
 
