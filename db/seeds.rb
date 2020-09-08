@@ -14,6 +14,10 @@ User.destroy_all
 
 Playlist.destroy_all
 
+Video.destroy_all
+
+
+
 
 
 5.times do |i|
@@ -40,11 +44,6 @@ Playlist.destroy_all
     end
 
 puts "Create User : Done"
-
-
-
-
-
 
 
 5.times do |x|
