@@ -1,0 +1,37 @@
+<html>
+
+<div class='container'>
+
+ <h1 class="display-4-selection text-center my-5">Mon Profil</h1>
+
+
+  <div class="row justify-content-center">
+    <div class="card border-primary">
+      <div class="card-header">
+        <p class="h3 text-center"> <%= @user.name %></p>
+      </div>
+
+      <h3 class="text-center">Votre photo de profil</h3>
+          <%if @user.avatar.attached?%>
+            <%= image_tag @user.avatar, alt: 'avatar' %>
+          <%else%>
+            <p class="text-center">=== Vous n'avez pas encore de photo de profil ===</p>
+          <%end%> 
+
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">------------ Mes informations ------------ </h5>
+        <p class="card-text text-center"><span class="h6 text-center">Ma description:</span><br> <span class="ml-3 text-center"><%= @user.description %></span><br></p>
+          <p class="card-text text-center"><span class="h6 text-center">Mon email:</span><br> <span class="ml-3 text-center" ><%= @user.email %></span><br></p><br>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="text-center">
+    <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-primary mr-5" %>
+    <%= link_to 'Retour Accueil', root_path, class:"btn btn-secondary" %>
+    <br><br><br>
+
+  </div>
+</div>
+</html>

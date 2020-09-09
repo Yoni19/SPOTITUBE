@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 has_many :collaborations
-has_many :playlist, foreign_key: 'owner_id', class: "Playlist"
+has_many :playlists, foreign_key: 'owner_id', class_name: "Playlist"
 end
