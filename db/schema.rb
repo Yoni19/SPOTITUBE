@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2020_09_08_140545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,8 +36,6 @@ ActiveRecord::Schema.define(version: 2020_09_08_140545) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-=======
->>>>>>> develop
   create_table "collaborations", force: :cascade do |t|
     t.bigint "playlist_id"
     t.bigint "collaborator_id"
@@ -90,9 +87,6 @@ ActiveRecord::Schema.define(version: 2020_09_08_140545) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-=======
->>>>>>> develop
   add_foreign_key "collaborations", "playlists"
 end
