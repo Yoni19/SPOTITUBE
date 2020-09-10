@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-
+  before_action :authenticate_user!
     def index
         @playlists = Playlist.all
     end
@@ -9,7 +9,7 @@ class PlaylistsController < ApplicationController
     end
 
     def new
-        @playlist = Playlist.new(playlist_params)
+        @playlist = Playlist.new
     end
 
     def create
@@ -17,7 +17,7 @@ class PlaylistsController < ApplicationController
         @playlist.owner_id = current_user.id
     
         if @playlist.save 
-          flash[:success] = "La playlist #{playlist.title} a bien été créée !"
+          flash[:success] = "La playlist #{@playlist.title} a bien été créée !"
           redirect_to :controller => 'playlists', :action => 'show', id: @playlist.id
         else
           flash[:danger] = "Nous n'avons pas réussi à créer ta playlist pour la (ou les) raison(s) suivante(s) : #{@playlist.errors.full_messages.each {| message | message}.join(' , ')}"
@@ -51,10 +51,17 @@ class PlaylistsController < ApplicationController
         end
     end
 
+  def is_owner?
+    if current_user.id != @playlist.id
+      flash[:danger] = "Vous ne pouvez pas acceder à cette page"
+      redirect_to root_path
+    end
+  end
+
     private
 
     def playlist_params
-      params.require(:playlist).permit(:title, :description)
+      params.require(:playlist).permit(:title, :description, :private_mode, :collaborative_mode, :owner_id)
     end
 
 end

@@ -1,3 +1,8 @@
+<head>
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4 pt-5 font-weight-bold text-center">Index des playlists</h1>
 
@@ -9,8 +14,16 @@
       <div class="card-body">
         <h5 class="mt-0 text-center"><%= playlist.title  %></h5>
         <p class="text-info"><%= playlist.description %></p>
+        <% if playlist.private_mode == false %>
+        <p><%= link_to "Voir cette playlist", playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %></p>
+        <% else%>
+        <p>Cette playlist est privée, sorry</p>
+        <% end %>
        
       </div>
     </div>
   <% end %>
+  <p><%= link_to "Créer ma playlist", new_playlist_path, class: 'btn btn-outline-success btn-sm' %></p>
 </div>
+<script src="assets/js/app.js"></script>
+</body>
