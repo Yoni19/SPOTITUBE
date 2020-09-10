@@ -1,24 +1,48 @@
-<%= form_for @playlist do |f| %>
-    <div class="form-group">
-        <label>Titre de la playlist</label>
-        <%= f.text_area :title, class: 'form-control' %>
-    </div>
+<div id="primary" class="p-t-b-100 height-full">
+    <div class="container">
+        <div class="text-center s-14 l-s-2 my-5">
+            <a class="my-5" href="index.html">
 
-    <div class="form-group">
-    <label>Expliques-nous ton nouveau mood :</label>
-    <%= f.text_area :description, class: 'form-control' %>
-    </div>
+                <span>SPOTITUBE</span>
 
-    <div class="form-group row">
-    <label>playlist privée ou accessible aux autres users ?</label>
-    <div class="col-lg-9">
-      <%= f.radio_button :private_mode, false %> Accessible aux autres
-      <%= f.radio_button :private_mode, true %> Privée
+            </a>
+        </div>
+        <div class="row justify-content-center">
+        <%= form_for @playlist do |f| %>
+                      <div class="card p-5">
+                            <form class="form-material" action="index.html">
+                                <div class="body">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label>Titre de la playlist</label>
+                                            <%= f.text_area :title, class: 'form-control' %>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Expliques-nous ton nouveau mood :</label>
+                                            <%= f.text_area :description, class: 'form-control' %>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label>playlist privée ou accessible aux autres users ?</label>
+                                            <div class="col-lg-9">
+                                              <%= f.radio_button :private_mode, false %> Accessible aux autres
+                                              <%= f.radio_button :private_mode, true %> Privée
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-outline-primary" type="submit">Enregister les modifications</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            <% end %>
+        </div>
     </div>
-  </div>
+</div>
+                        
 
-    <div class="form-group">
-        <button type="submit">Enregister les modifications</button>
-    </div>
 
-<% end %>
+
+
+

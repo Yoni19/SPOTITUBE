@@ -40,22 +40,20 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 my-2">
                             <figure>
                                 <div class="img-wrapper">
-                                    <%= image_tag("/app/assets/images/demo/a1.jpg") %>
+                                <img src="./app/assets/images/demo/a1.jpg" />
                                     <div class="img-overlay text-white text-center">
-                                        <a href="album-single.html">
                                             <div class="figcaption mt-3">
                                                 <i class="icon-link s-48"></i>
-                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %>
+                                                <p><%= link_to "Voir cette playlist", playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %></p>
                                                 <h5 class="mt-5"><%= playlist.title %></h5>
                                                 <span>        
                                                 <% if playlist.private_mode == false %>
-                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %>
+                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-sm' %>
                                                 <% else%>
                                                 <p>Cette playlist est privée, sorry</p>
                                                 <% end %>
                                                 </span>
                                             </div>
-                                        </a>
                                     </div>
                                     <div class="figure-title text-center p-2">
                                         <h5><%= playlist.title %></h5>
