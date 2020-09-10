@@ -2,9 +2,21 @@
 
 <div class='container'>
 
- <h1 class="display-4-selection text-center my-5"><%= "#{@playlist.title}" %></h1>
+ <h1><%= "#{@playlist.title}" %></h1>
+
+ <h3><%= "#{@playlist.description}" %></h3>
+
+<p>Cliques <%= link_to "Ici", edit_playlist_path(id: @playlist.id) %> pour modifier la playlist.</p>
 
 
+<% if @playlist.owner.id == current_user.id %>
+
+<div class="container text-center">
+    <p>Cliques <%= link_to "Ici", edit_playlist_path(id: @playlist.id) %> pour modifier la playlist.</p>
+
+    <%= button_to "Supprimer la playlist", playlist_path(@playlist), method: :delete %>
+</div>
+<% end %>
 
   </div>
 </div>
