@@ -14,6 +14,8 @@
 <div class="container text-center">
     <p>Cliques <%= link_to "Ici", edit_playlist_path(id: @playlist.id) %> pour modifier la playlist.</p>
 
+    <p>Cliques <%= link_to "Ajouter une nouvelle vidéo", new_video_path(id: @playlist.id) %></p>
+
     <%= button_to "Supprimer la playlist", playlist_path(@playlist), method: :delete %>
 </div>
 <% end %>

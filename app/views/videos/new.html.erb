@@ -1,0 +1,15 @@
+<h2>Soumets le lien de ta video ici :</h2>
+
+<form action="<%= videos_path %>" method="POST">
+<input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+<br>
+<div class="form-group">
+    <label for="title">Titre</label>
+    <input type="text" class="form-control" name='title' placeholder="Titre ici please">
+    <br>
+    <label for="url">URL</label>
+    <input type="text" class="form-control" name='url' placeholder="URL DE TA VIDEO, MERCI">
+  </div>
+  <button type="submit" class="btn btn-dark">Ajouter ma vidéo</button>
+</form>
+

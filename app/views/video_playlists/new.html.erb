@@ -1,0 +1,21 @@
+<h3>Choisis maintennat la playlist à laquelle tu veux lajouter</p>
+      <%= form_for @video_playlist do |f| %>
+    
+
+    
+
+        </div>
+    
+        <div class="form-group">
+
+
+        <%= f.label :playlist %><br />  
+        <%= f.select "playlist_id", options_from_collection_for_select(Playlist.where(owner_id: current_user.id), "id","title"), class: "form-control" %>  
+        </div>
+
+    
+        <button type="submit" class="btn btn-danger align-center">Valider</button>
+      <% end %> 
+    
+
+

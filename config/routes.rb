@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   end 
 
   resources 'playlists'
+  resources 'video_playlists'
+  resources 'videos'
+
 
 end
