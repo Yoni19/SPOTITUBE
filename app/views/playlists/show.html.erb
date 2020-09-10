@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+        <div class="title-container">
+            <h1><%= playlist.title %></h1>
+            <p><%= playlist.description %></p>
+        </div>
+        <% @video_playlists.each do |video| %>
+        <div class="col-md-4">
+            <div class="card border-primary mb-4" id="card-index">
+                <div class="frproductinner innerposition">
+                    <h4><a href=""><%= video.title %></a></h4>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+

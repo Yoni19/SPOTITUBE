@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Front page</title>
+</head>
+<body>
+
+
+  <!------INDEX------>
+
+  <h3 class="text-center"> Toutes les playlists </h3><br>
+
+
+<div class="index-container justify-content-between">
+    <div class="row">
+          <% @playlists.each do |playlist| %>
+        <div class="col-md-4">
+            <div class="card border-primary mb-4" id="card-index">
+                <div class="htcatthumb"><a href="<%= playlist_path(playlist.id) %>"></div>
+                <div class="frproductinner innerposition">
+                    <h4><a href=""><%= playlist.title %></a></h4>
+                </div>
+            </div>
+        </div>
+          <% end %>
+    </div>
+</div>
+
+
+</body>
+</html>
