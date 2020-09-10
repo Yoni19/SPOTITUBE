@@ -1,8 +1,4 @@
-<head>
-<link rel="stylesheet" href="assets/css/app.css">
-</head>
 
-<body>
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4 pt-5 font-weight-bold text-center">Index des playlists</h1>
 
@@ -25,5 +21,51 @@
   <% end %>
   <p><%= link_to "Créer ma playlist", new_playlist_path, class: 'btn btn-outline-success btn-sm' %></p>
 </div>
-<script src="assets/js/app.js"></script>
-</body>
+
+
+
+<main class="page has-sidebar">
+    <div class="container-fluid relative animatedParent animateOnce">
+            <div class="animated p-5 ml-lg-5 mr-lg-5">
+                <section>
+                    <div class="relative mb-5">
+                        <br>
+                        <br>
+                        <br>
+                        <h1 class="mb-2 text-primary">Toutes mes playlists</h1>
+                        <p><%= link_to "Créer ma playlist", new_playlist_path, class: 'btn btn-outline-success btn-sm' %></p>
+                    </div>
+                    <div class="row has-items-overlay">
+                      <% @playlists.each do |playlist| %>
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                            <figure>
+                                <div class="img-wrapper">
+                                    <%= image_tag("/app/assets/images/demo/a1.jpg") %>
+                                    <div class="img-overlay text-white text-center">
+                                        <a href="album-single.html">
+                                            <div class="figcaption mt-3">
+                                                <i class="icon-link s-48"></i>
+                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %>
+                                                <h5 class="mt-5"><%= playlist.title %></h5>
+                                                <span>        
+                                                <% if playlist.private_mode == false %>
+                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %> 
+                                                <% else%>
+                                                <p>Cette playlist est privée, sorry</p>
+                                                <% end %>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="figure-title text-center p-2">
+                                        <h5><%= playlist.title %></h5>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                      <% end %>
+                    </div>
+                </section>
+            </div>
+    </div>
+</main>

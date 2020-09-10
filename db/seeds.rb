@@ -47,7 +47,7 @@ puts "Create User - Done"
 
     Playlist.create(
 
-      title: Faker::ChuckNorris.fact,
+      title: Faker::Hipster.sentence(word_count: 2),
       description: Faker::Lorem.paragraph,
       private_mode: false,
       collaborative_mode: false,

@@ -73,7 +73,7 @@ gem 'dotenv'
 
 gem 'administrate'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 
 
