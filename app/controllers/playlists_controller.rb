@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
 
     def index
-        @playlists = Paylist.all
+        @playlists = Playlist.all
     end
 
     def show
