@@ -1,29 +1,98 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/basic/favicon.ico" type="image/x-icon">
+    <title>Record</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<body>
+  <main>
+    <div id="primary" class="p-t-b-100 height-full">
+        <div class="container">
+            <div class="text-center s-14 l-s-2 my-5">
+                <a class="my-5" href="index.html">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                    <span>SPOTITUBE</span>
+                    
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mx-md-auto">
+                  <div class="mt-5">
+                      <div class="row grid">
+                          <div class="col-md-5  p-5">
+                              <h1 class="mt-3 font-weight-lighter">Déjà inscrit sur SpotiTube ?</h1>
+                              <div class="pt-3 mb-5">
+                                  <p>Vos playlists collaboratives vous attendent !</p>
+                                  <br>
+                                  <br>
+                                  <button type="submit" class="btn btn-outline-primary s-14 pl-4 pr-4"><%= link_to "Se connecter", new_session_path(resource_name) %><br /></button>
+                              </div>
+                          </div>
+                          <div class="col-md-7 card p-5">
+                              <form class="form-material" action="index.html">
+                                  <div class="body">
+                                  <h1 class="mt-3 font-weight-lighter">Inscrivez-vous !</h1>
+                                  <br>
+                                  <!-- Sign up form -->
+                                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                                  <%= render "devise/shared/error_messages", resource: resource %>
+                                      <!-- Input email -->
+                                      <div class="form-group form-float">
+                                          <div class="form-line">
+                                              <%= f.label :"Adresse email" %><br />
+                                              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-line' %>
+                                          </div>
+                                      </div>
+                                      <!-- Input password -->
+                                      <div class="form-group form-float">
+                                          <div class="form-line">  
+                                              <%= f.label :"Mot de passe" %>
+                                              <% if @minimum_password_length %>
+                                              <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                              <% end %><br />
+                                              <%= f.password_field :password, autocomplete: "new-password", class: 'form-line' %>
+                                          </div> 
+                                      </div>
+                                      <!-- Confirm password  -->
+                                      <div class="form-group form-float">
+                                          <div class="form-line"> 
+                                      <%= f.label :"Confirmation du mot de passe" %><br />
+                                      <%= f.password_field :"password_confirmation", autocomplete: "new-password", class: 'form-line' %>
+                                          </div> 
+                                      </div>
+                                      <!-- Submit button -->
+                                      <div class="form-group admin-connect col-12">
+                                        <button class="btn btn-outline-primary s-14 pl-4 pr-4" type="submit"><i class="fas fa-sign-in-alt"></i>S'inscrire</button>
+                                      </div>
+                                      <% end %>
+                                      <br>
+                                      <br>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+  </main>
+    
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+<script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyC3YkZNNySdyR87o83QEHWglHfHD_PZqiw&libraries=places"></script>
+<script src="assets/js/app.js"></script>
 
-<%= render "devise/shared/links" %>
+
+</body>
+</html>
+
+
