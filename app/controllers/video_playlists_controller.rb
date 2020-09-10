@@ -1,4 +1,4 @@
-/*-class VideoPlaylistsController < ApplicationController
+class VideoPlaylistsController < ApplicationController
 
     attr_accessor :user, :playlist
 
