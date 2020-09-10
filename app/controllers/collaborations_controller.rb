@@ -11,7 +11,7 @@ class CollaborationsController < ApplicationController
     
     def create
       @playlist = Playlist.find(params[:playlist_id])
-      @collaboration = Collaboration.new(playlist: Playlist.find(params[:playlist_id]), collaborator: User.find(params[:user_id])
+      @collaboration = Collaboration.new(playlist: Playlist.find(params[:playlist_id]), collaborator: User.find(params[:user_id]))
       if @collaboration.save
         flash[:success] = "Merci #{current_user.name} ! #{@collaboration.collaborator.name} peut maintenant participer à la playlist !"
         redirect_to :controller => 'playlists', :action => 'show' , id: Playlist.find(params[:playlist_id])
