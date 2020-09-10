@@ -1,6 +1,10 @@
 {
   "name": "Spotitube",
   "private": true,
+  "engines": {
+    "node": "12.10.0",
+    "yarn": "1.19.1"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
