@@ -1,4 +1,4 @@
-
+<% if user_signed_in? %>
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4 pt-5 font-weight-bold text-center">Index des playlists</h1>
 
@@ -33,7 +33,7 @@
                         <br>
                         <br>
                         <h1 class="mb-2 text-primary">Toutes mes playlists</h1>
-                        <p><%= link_to "Créer ma playlist", new_playlist_path, class: 'btn btn-outline-success btn-sm' %></p>
+                        <p><%= link_to "Créer une nouvelle playlist", new_playlist_path, class: 'btn btn-outline-primary btn-sm' %></p>
                     </div>
                     <div class="row has-items-overlay">
                       <% @playlists.each do |playlist| %>
@@ -49,7 +49,7 @@
                                                 <h5 class="mt-5"><%= playlist.title %></h5>
                                                 <span>        
                                                 <% if playlist.private_mode == false %>
-                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %> 
+                                                <%= link_to "/app/assets/images/icon/icon-link s-48"> playlist_path(:id => playlist.id), class: 'btn btn-outline-success btn-sm' %>
                                                 <% else%>
                                                 <p>Cette playlist est privée, sorry</p>
                                                 <% end %>
@@ -69,3 +69,62 @@
             </div>
     </div>
 </main>
+<% end %>
+
+<% if !user_signed_in? %>
+<!--Page Content-->
+<main id="pageContent" class="page has-sidebar">
+    <div class="container-fluid relative animatedParent animateOnce no-p">
+        <div class="animated">
+            <!--Banner Slider-->
+            <section>
+                <div class="text-white">
+                    <div data-item="1"
+                        data-controls="true"
+                        data-slide-margin="0"
+                        data-gallery="false"
+                        data-pause="8000"
+                        data-pauseonhover="true"
+                        data-auto="false"
+                        data-pager="false"
+                        data-loop="true">
+                        <div class="xv-slide" data-bg-possition="top"
+                            style="background-image:url('assets/img/demo/b1.jpg');">
+                            <div class="has-bottom-gradient">
+                                <div class="p-md-5 p-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 animated">
+                                            <div class="xv-slider-content clearfix color-white">
+                                                <br>
+                                                <h1 class="s-64 mt-5 font-weight-lighter">Spotitube</h1>
+                                                <p class="s-24 font-weight-lighter">Vos playlists Youtube en mode collaboratif.</p>
+                                                <div class="pt-3">
+                                                    <p><%= link_to "Créez votre première playlist !", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-gradient"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--slider Wrap-->
+            </section>
+            <!--@Banner Slider-->
+
+            <div class="container-fluid relative animatedParent animateOnce col-lg-8 card-body p-4">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/MYZ67-Sh7kM"
+                            
+                            height="540"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</main><!--@Page Content-->
+<% end %>
