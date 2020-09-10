@@ -23,16 +23,13 @@ Video.destroy_all
 5.times do |i|
 
 
-    User = User.create(email: Faker::Name.first_name + "@test.com", 
+    User.create(
+      
+    email: Faker::Name.first_name + "@test.com", 
 
-    pseudo: Faker::Name.first_name,, 
-
-    first_name: Faker::Name.first_name,
-
-    last_name: Faker::Name.last_name,
+    name: Faker::Name.first_name,
 
     description: Faker::Lorem.paragraph,
-
 
     password: "123456",
 
@@ -43,26 +40,36 @@ Video.destroy_all
   )
     end
 
-puts "Create User : Done"
+puts "Create User - Done"
 
 
 5.times do |x|
 
-    playlist = Playlist.create(
+    Playlist.create(
 
       title: Faker::ChuckNorris.fact,
-      description: Faker::Lorem.paragraph
+      description: Faker::Lorem.paragraph,
+      private_mode: false,
+      collaborative_mode: false,
+      owner_id: User.all.sample.id
+
     
     )
 
-puts "Create Playlist - Done"
-  
-
 end
 
+puts "Create Playlist - Done"
+
 5.times do |x|
-  video = Video.create(
+  Video.create(
+    title: "SPOTITUBE",
     url: "https://www.youtube.com/watch?v=aeePeVUW6-k"
   )
 end
+
+puts "Create Vidéo - Done"
+
+
+
+
 
