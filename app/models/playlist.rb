@@ -4,4 +4,5 @@ class Playlist < ApplicationRecord
     has_many :collaborators, through: :collaborations, class_name: 'User'
     has_many :video_playlists
     has_many :videos, through: :video_playlists
+    has_one_attached :avatar
 end
