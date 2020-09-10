@@ -73,3 +73,5 @@ gem 'dotenv'
 
 gem 'administrate'
 
+gem 'therubyracer'
+
