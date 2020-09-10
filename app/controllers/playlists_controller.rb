@@ -20,7 +20,7 @@ class PlaylistsController < ApplicationController
           flash[:success] = "La playlist #{playlist.title} a bien été créée !"
           redirect_to :controller => 'playlists', :action => 'show', id: @playlist.id
         else
-          flash[:danger] = "Nous n'avons pas réussi à créer ta playlist pour la (ou les) raison(s) suivante(s) : #{@event.errors.full_messages.each {| message | message}.join(' , ')}"
+          flash[:danger] = "Nous n'avons pas réussi à créer ta playlist pour la (ou les) raison(s) suivante(s) : #{@playlist.errors.full_messages.each {| message | message}.join(' , ')}"
           render :action => 'new'
         end
     end
@@ -32,7 +32,7 @@ class PlaylistsController < ApplicationController
     def update
         @playlist = Playlist.find(params[:id])
         if @playlist.update(playlist_params)
-          flash[:success] = "Merci #{@playlist.admin.first_name} ! La playlist #{@playlist.title} "
+          flash[:success] = "Merci #{@playlist.owner.name} ! La playlist #{@playlist.title} "
           redirect_to :controller => 'playlists', :action => 'show', id: @playlist.id
         else
           flash[:danger] = "Nous n'avons pas réussi à modifier cette playlist"
@@ -43,7 +43,7 @@ class PlaylistsController < ApplicationController
     def destroy
         @playlist = Playlist.find(params[:id])
         if @playlist.destroy
-          flash[:success] = "Merci #{@playlist.admin.first_name} ! Nous avons pu supprimer l'event : #{@event.title} "
+          flash[:success] = "Merci #{@playlist.owner.name} ! La playlist : #{@playlist.title} a été supprimée."
           redirect_to :controller => 'playlists', :action => 'index' 
         else
           flash[:danger] = "Nous n'avons pas réussi à supprimer la playlist ! "
