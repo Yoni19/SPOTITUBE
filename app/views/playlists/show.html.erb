@@ -8,6 +8,16 @@
 
 
 
+<% @videos.each do |x| %>
+<% if x.playlist_id == @playlist.id %>
+<%= x.url %>
+<%= x.title %>
+<% end %>
+<% end %>
+
+
+
+
 
 <% if @playlist.owner.id == current_user.id %>
 

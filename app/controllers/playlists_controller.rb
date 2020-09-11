@@ -1,11 +1,16 @@
 class PlaylistsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
+  attr_accessor :video
+
     def index
         @playlists = Playlist.all
+    
     end
 
     def show
         @playlist = Playlist.find(params[:id])
+        @videos = Video.all
+       
     end
 
     def new
@@ -57,6 +62,8 @@ class PlaylistsController < ApplicationController
       redirect_to root_path
     end
   end
+
+
 
     private
 
