@@ -19,7 +19,8 @@ class VideosController < ApplicationController
 
     def create
 
-        @new_video = Video.new(title: params[:title], url: params[:url], playlist: Playlist.find(params[:playlist_id]))
+
+        @new_video = Video.new(title: params[:title], url: helpers.youtube_embed(params[:url]), playlist: Playlist.find(params[:playlist_id]))
             if @new_video.save
                 flash[:success] = "Merci #{current_user.name} ! Ta video a bien été ajoutée à la playlist."
                 redirect_to :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])

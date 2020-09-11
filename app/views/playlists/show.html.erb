@@ -9,12 +9,19 @@
 
 
 <% @videos.each do |x| %>
+<div class='col'>
 <% if x.playlist_id == @playlist.id %>
-<%= x.url %>
-<%= x.title %>
-<% end %>
-<% end %>
+  <div class='row mb-3'>
+    <h4><%= x.title %></h4>
+  </div>
+  <div class='row mb-3'>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %>" frameborder="0"></iframe>
+  </div>
+</div>
 
+
+<% end %>
+<% end %>
 
 
 
