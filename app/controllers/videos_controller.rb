@@ -9,8 +9,10 @@ class VideosController < ApplicationController
         @video = Video.find(params[:id])
         @title = @video.title
         @playlist = Playlist.find(params[:id])
-
-        # brancher l'API youtube iframe
+        respond_to do |format|
+            format.html { redirect_to playlist_path(:id => @playlist.id) }
+            format.js {}
+        end
     end
 
     def new
@@ -33,13 +35,11 @@ class VideosController < ApplicationController
     end
 
     def destroy
-        @video = Video.find(params[:id])
-        if @video.destroy
-          flash[:success] = "Merci #{@playlist.owner.name} ! La video : #{@video.title} a été supprimée."
-          redirect_to :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])
-        else
-          flash[:danger] = "Nous n'avons pas réussi à supprimer la video ! "
-          render :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])
+        @video = Video.find(params[:playlist_id])
+        @video.destroy
+        respond_to do |format|
+            format.html {redirect_to playlist_path(:id => @video.playlist.id)}
+            format.js {}
         end
     end
 

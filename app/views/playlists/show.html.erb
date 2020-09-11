@@ -16,8 +16,8 @@
   </div>
   <div class='row mb-3'>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %>" frameborder="0"></iframe>
-      <%= button_to "Supprimer la video", playlist_video_path(x), method: :delete %>
   </div>
+  <%= button_to "Supprimer la video", playlist_video_path(x), class:"btn btn-danger", method: :delete %>
 </div>
 
 
