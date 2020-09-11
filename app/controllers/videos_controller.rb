@@ -1,32 +1,32 @@
 class VideosController < ApplicationController
     def index
         @videos = Video.all
+
     end
 
     def show
         @video = Video.find(params[:id])
         @title = @video.title
-        @description = @video.description
+
         # brancher l'API youtube iframe
     end
 
     def new
-        @video = Video.new
+        @new_video = Video.new
     end
 
 
     def create
-    # let's see how it works with Youtube API    @video = Video.new(title: params[:title], url: params[:url])
-    
-=begin
-    if @event.save
-      flash[:success] = "Merci #{@event.user.email} ! Nous avons pu créer l'event : #{@event.title} "
-      redirect_to :controller => 'events', :action => 'index'
-    else
-      flash[:danger] = "Nous n'avons pas réussi à créer l'event pour la (ou les) raison(s) suivante(s) : #{@event.errors.full_messages.each {|message| message}.join('')}"
-      render :action => 'new'
-    end
-=end
+
+        @new_video = Video.new(title: params[:title], url: params[:url], playlist: Playlist.find(params[:playlist_id]))
+            if @new_video.save
+                flash[:success] = "Merci #{current_user.name} ! Ta video a bien été ajoutée à la playlist."
+                redirect_to :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])
+            else
+                flash[:danger] = "Nous n'avons pas réussi à récupérer ta vidéo pour la (ou les) raison(s) suivante(s) : #{@new_video.errors.full_messages.each {|message| message}.join('')}"
+                render :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])
+        end
+
     end
 
     def destroy

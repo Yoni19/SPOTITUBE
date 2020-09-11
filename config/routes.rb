@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end 
 
-  resources 'playlists'
+  resources 'playlists' do
+    resources 'videos'
+  end
 
 end

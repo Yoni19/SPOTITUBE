@@ -71,20 +71,13 @@ ActiveRecord::Schema.define(version: 2020_09_08_140545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "video_playlists", force: :cascade do |t|
-    t.bigint "playlist_id"
-    t.bigint "video_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["playlist_id"], name: "index_video_playlists_on_playlist_id"
-    t.index ["video_id"], name: "index_video_playlists_on_video_id"
-  end
-
   create_table "videos", force: :cascade do |t|
     t.string "title"
     t.string "url"
+    t.bigint "playlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_videos_on_playlist_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

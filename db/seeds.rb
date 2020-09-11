@@ -63,7 +63,8 @@ puts "Create Playlist - Done"
 5.times do |x|
   Video.create(
     title: "SPOTITUBE",
-    url: "https://www.youtube.com/watch?v=aeePeVUW6-k"
+    url: "https://www.youtube.com/watch?v=aeePeVUW6-k",
+    playlist_id: Playlist.all.sample.id
   )
 end
 
