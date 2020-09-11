@@ -10,6 +10,7 @@
 
 <div class="col-12 text-center">
   <% @playlists.each do |playlist| %>
+  <% if playlist.owner_id == current_user.id %>
     <div class="card">
       <div class="card-body">
         <h5 class="mt-0 text-center"><%= playlist.title  %></h5>
@@ -19,9 +20,9 @@
         <% else%>
         <p>Cette playlist est privée, sorry</p>
         <% end %>
-       
       </div>
     </div>
+    <% end %>
   <% end %>
   <p><%= link_to "Créer ma playlist", new_playlist_path, class: 'btn btn-outline-success btn-sm' %></p>
 </div>

@@ -11,7 +11,7 @@
 
           <% if user_signed_in? %>
           <div class="navbar-nav">
-              <%= link_to "Mes playlists", playlist_path(:id => current_user.id), :class => "dropdown-item" %></span>
+              <%= link_to "Mes playlists", playlists_path, :class => "dropdown-item" %></span>
           </div>  
           <div class="navbar-nav">
               <%= link_to "Mes collaborations", user_path(:id => current_user.id), :class => "dropdown-item" %></span>
@@ -20,7 +20,7 @@
               <%= link_to "Mon profil", user_path(:id => current_user.id), :class => "dropdown-item" %>
           </div>
           <div class="navbar-nav">
-              <%= link_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item", method: :delete %></span>
+              <%= button_to "Déconnexion", destroy_user_session_path, :class => "dropdown-item", method: :delete %></span>
           </div>
           <% end %>
           <% if !user_signed_in? %>
