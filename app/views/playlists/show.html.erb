@@ -1,19 +1,23 @@
-
-
 <div class='container'>
 
     <h1><%= "#{@playlist.title}" %></h1>
 
     <h3><%= "#{@playlist.description}" %></h3>
 
-    <h4>Tu partages cette playlist avec les personnes suivantes : <br><br>
-          <% @collaborations.each do |c| %>
-              <% if c.playlist_id == @playlist.id %>
-                  <%= c.collaborator.name %><br>
-              <% end %>
-          <% end %>
-    </h4>
+        <% if (@playlist.collaborations.count > 0) && (@playlist.owner.id == current_user.id) %>
+            <h4>Tu partages cette playlist avec les personnes suivantes : <br><br>
+                <% @collaborations.each do |c| %>
+                    <% if c.playlist_id == @playlist.id %>
+                        <%= c.collaborator.name %><br>
+                    <% end %>
+                <% end %>
+            </h4>
+        <% end %>
 
+        <% if collaborates?(@playlist) %>
+            <h4>Cette playlist appartient à : <%= @playlist.owner.name %></h4>
+        <% end %>
+        <br>
 
     <% @videos.each do |x| %>
         <div class='col'>
@@ -24,26 +28,21 @@
                 <div class='row mb-3'>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %>" frameborder="0"></iframe>
                 </div>
-                <%= button_to "Supprimer la video", playlist_video_path(x), class:"btn btn-danger", method: :delete %>
-
+                <% if collaborates?(x) %>
+                    <%= button_to "Supprimer la video", playlist_video_path(x), class:"btn btn-danger", method: :delete %>
+                <% end %>
             <% end %>
         </div>
     <% end %>
 
-
-
-
-    <% if @playlist.owner.id == current_user.id %>
-
-        <div class="container text-center">
-
+    <div class="container text-center">
+        <% if collaborates?(@playlist) %>
             <p>Clique <%= link_to "Ajouter une nouvelle vidéo", new_playlist_video_path(:playlist_id => @playlist.id) %></p>
             <p>Clique <%= link_to "Ici", edit_playlist_path(id: @playlist.id) %> pour modifier la playlist.</p>
+        <% end %>
+        <% if @playlist.owner.id == current_user.id %>
             <p>Clique <%= link_to "ici", new_playlist_collaboration_path(:playlist_id => @playlist.id) %> pour permettre à tes amis d'ajouter leurs vidéos sur ta playlist !</p>
-
             <%= button_to "Supprimer la playlist", playlist_path(@playlist), method: :delete %>
-        </div>
-    <% end %>
-
-
+        <% end %>
+    </div>
 </div>
