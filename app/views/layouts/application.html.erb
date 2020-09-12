@@ -11,11 +11,17 @@
   
   <body>
   <header>
-
-  <%= render 'layouts/flash' %>
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flash' %>
   </header>
+  
 
       <%= yield %>
   
+
+
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
   </body>
 </html>

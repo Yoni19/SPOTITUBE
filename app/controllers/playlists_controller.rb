@@ -1,5 +1,4 @@
 class PlaylistsController < ApplicationController
-  before_action :authenticate_user! 
   attr_accessor :video
 
     def index
