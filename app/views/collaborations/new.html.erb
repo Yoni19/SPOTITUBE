@@ -8,7 +8,7 @@
           <div class="form-group">
 
               <label for="collaborator_id">Collaborator</label>
-                  <%= select_tag(:collaborator_id, options_from_collection_for_select(User.all, "id", "name")) %>
+                  <%= select_tag(:collaborator_id, options_from_collection_for_select(@chosefrom, "id", "name")) %>
             <br>
         
 
