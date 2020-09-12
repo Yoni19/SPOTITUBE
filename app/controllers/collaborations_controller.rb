@@ -24,4 +24,8 @@ class CollaborationsController < ApplicationController
       end
     end
 
+    def destroy
+      @collaboration = Collaboration.find(params[:id])
+    end
+
 end

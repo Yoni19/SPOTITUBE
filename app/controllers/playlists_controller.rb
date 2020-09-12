@@ -47,6 +47,7 @@ class PlaylistsController < ApplicationController
 
     def destroy
         @playlist = Playlist.find(params[:id])
+        @playlist.collaborations.destroy_all
         if @playlist.destroy
           flash[:success] = "Merci #{@playlist.owner.name} ! La playlist : #{@playlist.title} a été supprimée."
           redirect_to :controller => 'playlists', :action => 'index' 
