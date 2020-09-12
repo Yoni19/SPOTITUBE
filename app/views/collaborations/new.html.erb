@@ -1,0 +1,18 @@
+<h2>Tu peux permettre à un utilisateur d''acéder à ta playlist !</h2>
+
+
+<%= form_for @collaboration do |f| %>
+
+
+
+    <div class="form-group">
+    <%= f.label :collaborator %><br />  
+    <%= f.select "collaborator_id", options_from_collection_for_select(User.all, "id","name"), class: "form-control" %>  
+    </div>
+    <div class="form-group">
+    <%= f.hidden_field :playlist_id, :value => @playlist.id %>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger align-center">Valider</button>
+  <% end %> 

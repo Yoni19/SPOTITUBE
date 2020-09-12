@@ -1,17 +1,28 @@
 class CollaborationsController < ApplicationController
+  attr_accessor :user, :playlist
 
-    def index
-        @collaborations = Collaboration.all
-        @playlist = Playlist.find(params[:playlist_id])
-    end
+#    def index
+#      @playlist = Playlist.find(params[:playlist_id])
+#        @collaborations = Collaboration.all
+#    end
 
     def new
-        @playlist = Playlist.find(params[:playlist_id])
+#      @collaborator = User.find(params[:id])
+      @collaboration = Collaboration.new
+
+#      @playlist = Playlist.find(params[:id])
+#      @collaboration = Collaboration.new
     end
     
     def create
-      @playlist = Playlist.find(params[:playlist_id])
-      @collaboration = Collaboration.new(playlist: Playlist.find(params[:playlist_id]), collaborator: User.find(params[:user_id]))
+
+
+      @collaboration = Collaboration.new(
+        playlist_id: @playlist.id, 
+        collaborator_id: @collaborator.id)
+
+#      @new_video = Video.new(title: params[:title], url: params[:url], playlist: Playlist.find(params[:playlist_id]))
+#      @collaboration = Collaboration.new(playlist: Playlist.find(params[:playlist_id]), collaborator_id: params[:collaborator_id])
       if @collaboration.save
         flash[:success] = "Merci #{current_user.name} ! #{@collaboration.collaborator.name} peut maintenant participer à la playlist !"
         redirect_to :controller => 'playlists', :action => 'show' , id: Playlist.find(params[:playlist_id])
