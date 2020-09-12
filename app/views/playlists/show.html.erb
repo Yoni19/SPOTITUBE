@@ -8,14 +8,14 @@
     <% if collaborates?(@playlist) %>
         <div class="container">
             <p><%= @playlist.owner.name %> vous a attribué le statut de collaborateur sur cette playlist. Vous pouvez désormais y ajouter des vidéos. </p>
-            <% if (@playlist.collaborations.count > 0) && (@playlist.collaborators.exclude?(current_user.id)) %>
-                <p>Sont également collaborateurs sur cette playlist :
-                    <% @collaborations.each do |c| %>
-                        <% if (c.playlist_id == @playlist.id) && (c.collaborator.id != current_user.id) %>
-                            <%= c.collaborator.name %><br>
+                <% if (@playlist.collaborations.count > 0) && (@playlist.collaborators.exclude?(current_user)) %>
+                    <p>Sont également collaborateurs sur cette playlist :
+                        <% @collaborations.each do |c| %>
+                            <% if (c.playlist_id == @playlist.id) && (c.collaborator.id != current_user.id) %>
+                                <%= c.collaborator.name %><br>
+                            <% end %>
                         <% end %>
-                    <% end %>
-            <% end %>  
+                <% end %>  
             <p><%= link_to "Ajouter une nouvelle vidéo", new_playlist_video_path(:playlist_id => @playlist.id), class:"btn btn-outline-primary" %></p>
         </div>
     <% end %>
