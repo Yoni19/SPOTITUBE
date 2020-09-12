@@ -33,7 +33,7 @@
 
     <p>Clique <%= link_to "Ajouter une nouvelle vidéo", new_playlist_video_path(:playlist_id => @playlist.id) %></p>
     <p>Clique <%= link_to "Ici", edit_playlist_path(id: @playlist.id) %> pour modifier la playlist.</p>
-    <p>Clique <%= link_to "ici", new_collaboration_path(:playlist_id => @playlist.id) %> pour permettre à tes amis d'ajouter leurs vidéos sur ta playlist !</p>
+    <p>Clique <%= link_to "ici", new_playlist_collaboration_path(:playlist_id => @playlist.id) %> pour permettre à tes amis d'ajouter leurs vidéos sur ta playlist !</p>
 
     <%= button_to "Supprimer la playlist", playlist_path(@playlist), method: :delete %>
 </div>

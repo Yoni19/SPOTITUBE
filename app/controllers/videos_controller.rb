@@ -20,8 +20,6 @@ class VideosController < ApplicationController
 
 
     def create
-
-
         @new_video = Video.new(title: params[:title], url: helpers.youtube_embed(params[:url]), playlist: Playlist.find(params[:playlist_id]))
             if @new_video.save
                 flash[:success] = "Merci #{current_user.name} ! Ta video a bien été ajoutée à la playlist."
@@ -30,7 +28,6 @@ class VideosController < ApplicationController
                 flash[:danger] = "Nous n'avons pas réussi à récupérer ta vidéo pour la (ou les) raison(s) suivante(s) : #{@new_video.errors.full_messages.each {|message| message}.join('')}"
                 render :controller => 'playlists', :action => 'show', id: Playlist.find(params[:playlist_id])
         end
-
     end
 
     def destroy

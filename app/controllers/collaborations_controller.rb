@@ -1,25 +1,17 @@
 class CollaborationsController < ApplicationController
   attr_accessor :user, :playlist
 
-#    def index
-#      @playlist = Playlist.find(params[:playlist_id])
-#        @collaborations = Collaboration.all
-#    end
 
     def new
-#      @collaborator = User.find(params[:id])
-      @collaboration = Collaboration.new
 
-#      @playlist = Playlist.find(params[:id])
-#      @collaboration = Collaboration.new
     end
     
     def create
 
 
       @collaboration = Collaboration.new(
-        playlist_id: @playlist.id, 
-        collaborator_id: @collaborator.id)
+        playlist: Playlist.find(params[:playlist_id]),
+        collaborator_id: params[:collaborator_id].to_i)
 
 #      @new_video = Video.new(title: params[:title], url: params[:url], playlist: Playlist.find(params[:playlist_id]))
 #      @collaboration = Collaboration.new(playlist: Playlist.find(params[:playlist_id]), collaborator_id: params[:collaborator_id])
