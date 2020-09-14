@@ -12,6 +12,8 @@
   <body class="theme-dark">
   <header>
     <%= render 'layouts/navbar' %>
+    <%= link_to_unless_current "FR", locale: :fr %>
+    <%= link_to_unless_current "EN", locale: :en %>
     <%= render 'layouts/flash' %>
   </header>
   
