@@ -46,11 +46,24 @@
         <div class='col m-4'>
             <% if x.playlist_id == @playlist.id %>
                 <div class='row mb-1'>
-                    <h4><%= x.title %></h4>
+                    <h3><%= x.title %></h3>
+                    <h3><%= x.url %></h3>
+                   
+                   
                 </div>
+                <% if x.url[/youtu\.be\/([^\?]*)/] %>
                 <div class='row mb-3'>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %>" frameborder="0"></iframe>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %> " frameborder="0"></iframe>
+               </div>
+              
+              <% else %>
+
+                <div class='row mb-3'>
+                <iframe frameborder="0" width="640" height="360" src="https://www.dailymotion.com/embed/video/<%= x.url %>" ></iframe>
                 </div>
+              <% end %>
+              <br>
+
                 <% if @playlist.owner.id == current_user.id %>
                     <%= button_to "Supprimer la video", playlist_video_path(x), class:"btn btn-outline-primary", method: :delete %>
                 <% end %>

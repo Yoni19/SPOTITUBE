@@ -10,6 +10,7 @@ class PlaylistsController < ApplicationController
         @playlist = Playlist.find(params[:id])
         @videos = Video.all
         @collaborations = Collaboration.all
+        @video = Video.find(params[:id])
        
     end
 
