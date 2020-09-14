@@ -29,6 +29,6 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  baseline: "Your playlists in collaborative mode !"
-  new_user: "Create your very first playlist !"
+fr:
+  baseline: "Vos playlists en mode collaboratif !"
+  new_user: "Crééz votre première playlist !"
