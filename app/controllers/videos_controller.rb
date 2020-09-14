@@ -20,7 +20,12 @@ class VideosController < ApplicationController
 
 
     def create
-        @new_video = Video.new(title: params[:title], url: helpers.link_embed(params[:url]), playlist: Playlist.find(params[:playlist_id])) 
+
+        host = URI.parse(params[:url]).host
+        if host.start_with?('www.') and host.end_with?('.com')
+            host = host[4..-5]
+        end
+        @new_video = Video.new(title: params[:title], url: helpers.link_embed(params[:url]), platform: host, playlist: Playlist.find(params[:playlist_id])) 
 
             if @new_video.save
                 flash[:success] = "Merci #{current_user.name} ! Ta video a bien été ajoutée à la playlist."

@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_140545) do
 
   create_table "videos", force: :cascade do |t|
     t.string "title"
+    t.string "platform"
     t.string "url"
     t.bigint "playlist_id"
     t.datetime "created_at", null: false

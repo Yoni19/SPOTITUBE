@@ -47,11 +47,10 @@
             <% if x.playlist_id == @playlist.id %>
                 <div class='row mb-1'>
                     <h3><%= x.title %></h3>
-                    <h3><%= x.url %></h3>
                    
                    
                 </div>
-                <% if x.url[/youtu\.be\/([^\?]*)/] %>
+                <% if x.platform == 'youtube' %>
                 <div class='row mb-3'>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= x.url %> " frameborder="0"></iframe>
                </div>
