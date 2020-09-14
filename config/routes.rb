@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :collaborations, only: [:new, :create]
   end
 
+  resources :collaborations, only: [:index, :show]
+  
 
 end
