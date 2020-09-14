@@ -75,5 +75,7 @@ gem 'administrate'
 
 #gem 'therubyracer'
 
+gem 'friendly_id', '~> 5.4.0'
+
 
 

@@ -4,4 +4,7 @@ class Playlist < ApplicationRecord
     has_many :collaborators, through: :collaborations, class_name: 'User'
     has_many :videos
     has_one_attached :avatar
+
+    extend FriendlyId
+        friendly_id :title, use: :slugged
 end

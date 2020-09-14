@@ -7,10 +7,9 @@ class PlaylistsController < ApplicationController
     end
 
     def show
-        @playlist = Playlist.find(params[:id])
+        @playlist = Playlist.friendly.find(params[:id])
         @videos = Video.all
         @collaborations = Collaboration.all
-       
     end
 
     def new

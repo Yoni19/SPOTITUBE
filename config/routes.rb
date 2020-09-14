@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end 
 
   resources :playlists do
-    resources :videos
+    resources :videos, param: :title
     resources :collaborations, only: [:new, :create]
   end
 
