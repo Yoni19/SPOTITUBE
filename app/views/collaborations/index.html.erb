@@ -1,4 +1,5 @@
-    <main id="pageContent" class="page has-sidebar">
+<% if user_signed_in? %>
+  <main id="pageContent" class="page has-sidebar">
 
             <!---Index des collaboraions--->
             <div class="container-fluid relative animatedParent animateOnce">
@@ -14,6 +15,7 @@
                         </div>
                         <div class="row has-items-overlay">
                             <% @collaborations.each do |z| %>
+                                <% if collaborates?(z.playlist) %>
                                     <div class="col-lg-3 col-md-4 col-sm-6 my-2">
                                         <figure>
                                             <div class="img-wrapper">
@@ -32,16 +34,13 @@
                                                     <span>Playlist de <%= z.playlist.owner.name %></span>
                                                 </div>
                                             </div>
-                
                                         </figure>
-                                    </div>      
+                                    </div>  
+                                <% end %> 
                             <% end %>
                         </div>
                     </section>
                 </div>
             </div>
-        
-
-
-
-    </main><!--@Page Content-->
+    </main>
+<% end %>
