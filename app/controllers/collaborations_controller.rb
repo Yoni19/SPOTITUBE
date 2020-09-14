@@ -2,13 +2,23 @@ class CollaborationsController < ApplicationController
   attr_accessor :user, :playlist
 
 
-    def new
-      @people = User.all
-      @chosefrom = @people.reject{ |user| user.id == current_user.id }
+    def index
+        @collaborations = Collaboration.all 
     end
-    
-    def create
 
+    def new
+        @people = User.all
+        @chosefrom = @people.reject{ |user| user.id == current_user.id }
+    end
+
+    
+    # def show
+        #@mycollaborations = Collaboration.where(collaborator_id = current_user.id)
+    #end
+
+
+
+    def create
 
       @collaboration = Collaboration.new(
         playlist: Playlist.find(params[:playlist_id]),
